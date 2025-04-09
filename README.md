@@ -2,15 +2,35 @@
 
 A new Flutter project.
 
-## Getting Started
+## SOAL 13 PRAKTIKUM 7: BLoC Pattern
 
-This project is a starting point for a Flutter application.
+- Jelaskan maksud praktikum ini ! Dimanakah letak konsep pola BLoC-nya ?
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+- Lalu lakukan commit dengan pesan "P7: Jawaban Soal 13".
 
-A few resources to get you started if this is your first Flutter project:
+JAWABAN
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Maksud Praktikum (BLoC Pattern)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Praktikum ini bertujuan untuk memperkenalkan pola BLoC (Business Logic Component) dalam pengembangan aplikasi Flutter. Dengan pola ini, kita memisahkan logika bisnis (seperti menghasilkan angka acak) dari tampilan UI, agar kode menjadi lebih bersih, mudah diatur, dan scalable.
+
+ Letak Konsep Pola BLoC-nya
+Konsep BLoC terlihat pada bagian berikut:
+1.Stream & Sink digunakan untuk mengatur aliran data (streaming data):
+- Stream<int> get randomNumber → digunakan untuk mengirim data ke UI.
+- Sink<void> get generateRandom → digunakan UI untuk memicu aksi dari BLoC.
+
+2.Logika bisnis berada di dalam BLoC (bukan di UI):
+- Kode acak Random().nextInt(10) tidak ditulis langsung di layar (Widget) tapi di dalam RandomNumberBloc.
+
+3.UI hanya mendengarkan Stream dan mengirim perintah lewat Sink:
+- Misalnya, tombol memanggil bloc.generateRandom.add(null) untuk memicu logika di dalam BLoC.
+- Hasil angka ditampilkan lewat StreamBuilder yang mendengarkan bloc.randomNumber.
+
+Kesimpulan
+Praktikum ini menunjukkan bagaimana logika aplikasi dan UI dapat dipisahkan dengan menggunakan BLoC pattern, yang membuat aplikasi lebih mudah diuji, dirawat, dan dikembangkan ke depannya.
+
+2. Hasil ScreenCapture 
+![GIF](screencapture/hasilbarugif2.gif)
+
+3. Commit Done
